@@ -40,6 +40,7 @@ helm.sh/chart: {{ include "reviews.chart" . }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
+version: {{ include "reviews.version" . }}
 {{- end }}
 
 {{/*
@@ -48,6 +49,7 @@ Selector labels
 {{- define "reviews.selectorLabels" -}}
 app.kubernetes.io/name: {{ include "reviews.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
+app: reviews
 {{- end }}
 
 {{/*
@@ -60,3 +62,10 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+{{/*
+Define version of the deployment
+*/}}
+{{- define "reviews.version" -}}
+{{- default "v1" .Values.version -}}
+{{- end -}}
