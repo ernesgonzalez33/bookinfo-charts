@@ -40,6 +40,7 @@ helm.sh/chart: {{ include "details.chart" . }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
+version: {{ include "details.version" . }}
 {{- end }}
 
 {{/*
@@ -48,6 +49,7 @@ Selector labels
 {{- define "details.selectorLabels" -}}
 app.kubernetes.io/name: {{ include "details.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
+app: details
 {{- end }}
 
 {{/*
@@ -60,3 +62,10 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+{{/*
+Define version of the deployment
+*/}}
+{{- define "details.version" -}}
+{{- default "v1" .Values.version -}}
+{{- end -}}
