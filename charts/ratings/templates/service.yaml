@@ -1,11 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "ratings.fullname" . }}
+  name: ratings
   labels:
     {{- include "ratings.labels" . | nindent 4 }}
 spec:
-  type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.port }}
       targetPort: http
