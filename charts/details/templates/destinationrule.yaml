@@ -1,0 +1,16 @@
+{{- if .Values.global.meshEnabled -}}
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: details
+spec:
+  host: details
+  trafficPolicy:
+    tls:
+      mode: {{ .Values.mesh.trafficPolicy }}
+  subsets:
+  - name: {{ include "details.version" . }}
+    labels:
+      version: {{ include "details.version" . }}
+{{- end -}}

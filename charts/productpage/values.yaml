@@ -31,3 +31,6 @@ podAnnotations:
 
 service:
   port: 9080
+
+mesh:
+  trafficPolicy: ISTIO_MUTUAL
