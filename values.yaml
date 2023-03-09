@@ -1,5 +1,2 @@
 global:
   meshEnabled: true
-
-ratings:
-  version: "v2"
