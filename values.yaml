@@ -1,2 +1,8 @@
 global:
   meshEnabled: true
+
+ratings:
+  version: "v2"
+
+reviews:
+  version: "v2"
