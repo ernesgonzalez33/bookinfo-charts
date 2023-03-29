@@ -1,0 +1,8 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: productpage-v1
+  annotations:
+    argocd.argoproj.io/sync-options: ServerSideApply=true
+spec:
+  replicas: 3
